@@ -1,0 +1,32 @@
+---
+  - hosts: vms
+    tasks:
+    - name: Copy asrvu docker tar file 
+      copy:
+        src: ../bundles/asrvu.tar
+        dest: /tmp 
+
+  
+  - hosts: vms
+    tasks:
+    - name: stopping docker service
+      service:
+        name: docker
+        state: stopped
+
+  - hosts: vms
+    tasks:
+    - name: stopping docker service
+      service:
+        name: docker
+        state: restarted
+   
+
+                 
+  - name: Extracting the docker asrvu tar file
+    hosts: vms
+    become: true
+    become_user: root
+    tasks:
+      - shell: docker load -i /tmp/asrvu.tar
+      - shell: docker run -idt -p 8000:8000 -v /var/log/asrvalidationscript:/var/log/asrvalidationscript asrvu/ubuntu:16.04

@@ -1,0 +1,8 @@
+#FROM wsingty/baseasrvu:v0.1
+FROM baseasrvu/ubuntu:16.04
+MAINTAINER David Ingty <david.ingty@oracle.com>
+
+COPY asrvalidationscript /opt/asrvalidationscript
+RUN chmod -R 777 /opt/asrvalidationscript
+CMD gunicorn app:app --bind 0.0.0.0:8000 --timeout 999
+#CMD python app.py 

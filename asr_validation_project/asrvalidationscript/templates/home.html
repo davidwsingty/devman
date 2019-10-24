@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ASR Validation Utility</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock head %}
+
+{% block content %}
+
+    <form action="{{ url_for('home') }}" method="POST" name="myForm" onsubmit="return validateForm()">
+    <center>
+            <h1><center>ASR Validation Utility</center></h1>
+<p id="rcorners2">
+    <p align="right"><small>Created By: <a href="mailto:david.ingty@oracle.com">David Ingty</a></small></p>
+
+
+        <label for="fname"><font color="Green">SR-NUMBER</font></label>
+        <input type="text" name="srnum" class="rounded" id="105">
+
+
+    <br><br>
+    <font color="Green">LIST_ASSET</font>
+    <br>
+    <textarea name="list_asset" id="101" cols="100" rows="20"></textarea>
+    <br><br>
+    <font color="Green">INSTALLED-BASE</font>
+    <br>
+    <textarea name="ib" id="102" cols="100" rows="20"></textarea>
+    <br><br>
+</p>
+    <script>
+        function reset(){
+            document.getElementById('105').value = "";
+            document.getElementById('101').value = "";
+            document.getElementById('100').value = "";
+        }
+    </script>
+
+    <p id="btns">
+        <button class="button button1" id="103">SUBMIT</button>
+        &nbsp;&nbsp;
+        <button class="button button1" id="104" type="button" onclick="reset(); return false;">RESET</button>
+    </p>
+
+    <br><br>
+    <footer>
+    <p><strong>Powered By Flask 1.0.2</strong></p></strong></p>
+    </footer>
+    </center>
+    </form>
+
+{% endblock content %}

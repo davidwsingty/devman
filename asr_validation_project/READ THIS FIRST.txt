@@ -1,0 +1,28 @@
+1. Copy the directory "asr_validation_project" along with its contents to the Master server.
+
+2. After copying, login to the Master server and go to the copied directory. You should be under "asr_validation_project/".
+
+3. Set the system wide proxy:
+    echo 'export http_proxy="http://www-proxy.us.oracle.com:80"' >> /etc/bash.bashrc
+    echo 'export https_proxy="https://www-proxy.us.oracle.com:80"' >> /etc/bash.bashrc
+    source /etc/bash.bashrc
+
+4. Now run: apt update -y && apt install python -y && apt install ansible -y && apt install docker.io -y
+
+5. If you encounter "Resource temporarily unavailable" ERROR run the following commands and try again:
+      sudo rm /var/lib/apt/lists/lock
+      sudo rm /var/cache/apt/archives/lock
+      sudo rm /var/lib/dpkg/lock
+
+6. Execute the "setup.py" script by typing - "python setup.py" and enter the prompts as required. 
+
+7. The ansible target systems should be updated and python along with docker must be installed.
+   Log in to the ansible target systems and RUN:
+       apt update -y && apt install python -y && apt install docker.io -y
+
+8. Once done, test if ansible can ping the target systems:
+   NOTE: you should be inside the ansible dir "asr_validation_project/ansible" in the Master Server.
+       RUN: ansible -i inventory -m ping <GROUP_NAME>
+
+9.    
+ 
